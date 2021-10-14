@@ -26,13 +26,13 @@ def main():
     lis1 = convert(lis1)
     answer = is_sorted(lis1)
     
-    print("---------------------------")
+    print("="*25)
     if answer == True:
         print("The list is already sorted!")
     
     else:
         print("The list is not sorted.")
-    print("---------------------------")
+    print("="*25)
 
 if __name__ == "__main__":
     main()
