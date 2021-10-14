@@ -57,7 +57,7 @@ def print_answer(dic, lis_of_01):
 
     print("="*30)
 
-    maximum = max(dic)
+    maximum = max(dic.values())
     index = maximum
 
     for i in range(0,maximum):
