@@ -6,20 +6,20 @@ def bean_machine(slots, balls):
     index = 0
 
     
-#   Create list of 0 and 1 "50/50" then add list into a storage list
-    for i in range(0,balls):
+    #   Create list of 0 and 1 "50/50" then add list into a storage list
+    for i in range(0, balls):
         for i in range(0, slots):
             temp_lis.append(randint(0,1))
         lis_of_01.append(temp_lis)
         temp_lis = []
 
 
-#   Create all possible slots
+    #   Create all possible slots
     for i in range(0,slots):
         dic_of_slots[i] = 0
 
 
-#   Add balls in correct slot
+    #   Add balls in correct slot
     index = 0
     for x in range(0,balls):
         position = sum(lis_of_01[index])
@@ -79,9 +79,9 @@ def main():
     num_of_balls = int(input("Enter a number of balls to drop: "))
     num_of_slots = int(input("Enter a number of slots: "))
 
-    dic, lis = bean_machine(num_of_slots, num_of_balls)
+    dic_of_results, lis_of_01 = bean_machine(num_of_slots, num_of_balls)
     
-    print_answer(dic, lis)
+    print_answer(dic_of_results, lis_of_01)
 
 if __name__ == "__main__":
     main()
