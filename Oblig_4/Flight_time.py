@@ -32,7 +32,6 @@ class Flight:
 
 
 class Itineray:
-    
     pass
 
 
