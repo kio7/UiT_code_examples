@@ -22,7 +22,6 @@ class Flight:
     def arrival_time(self, value):
         self.__arrival_time = value
 
-
     def get_flight_time(self, departure_time, arrival_time):
         flight_time_hours = arrival_time[3] - departure_time[3]
         flight_time_minutes = arrival_time[4] - departure_time[4]
@@ -64,7 +63,6 @@ class Itineray():
             index +=1
 
         return sum(lis_of_minutes_in_air)
-
 
 
 def main():
