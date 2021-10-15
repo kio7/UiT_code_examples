@@ -42,34 +42,29 @@ class Itineray():
         self.flights = flights
 
     def get_total_travel_time(self): 
-        lis_storage = []
         result = 0.0
-        start = self.flights[0].departure_time
 
         for i in range(0,len(self.flights)):
             lis1 = self.flights[i]
-            lis_storage.append(lis1.arrival_time.hour)
-            lis_storage.append(lis1.arrival_time.minute)
-            lis_storage.append(lis1.arrival_time.second)
+            hour = lis1.arrival_time.hour
+            min = lis1.arrival_time.minute
+            sec = lis1.arrival_time.second
 
-            hour = lis_storage[0]
-            min = lis_storage[1]
-            sec = lis_storage[2]
+            arrival_time = hour * 60 + min + sec / 60
 
-            departure_time = hour * 60 + min + sec / 60
+            if arrival_time > result:
+                result = arrival_time
 
-            if departure_time > result:
-                result = departure_time
-            lis_storage = []
 
+        start = self.flights[0].departure_time
         start_hour = start.hour
         start_min = start.minute
         start_sec = start.second
         start_time = start_hour * 60 + start_min + start_sec / 60
 
         total_travel_time = result - start_time
-
         return total_travel_time
+
 
     def get_total_flight_time(self):
 
