@@ -52,7 +52,7 @@ class Itineray():
             start_sec = temp.second
 
             departure_time = start_hour * 60 + start_min + start_sec / 60
-            
+
             if departure_time < earliest_departure_time:
                 earliest_departure_time = departure_time
         
