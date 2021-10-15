@@ -82,9 +82,9 @@ def main():
 
     itinerary = Itineray(flights)
 
-    print(itinerary.get_total_flight_time())
-    
     print(itinerary.get_total_travel_time())
+
+    print(itinerary.get_total_flight_time())
 
     
 if __name__ == "__main__":
