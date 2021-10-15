@@ -1,3 +1,5 @@
+from datetime import datetime
+
 class Flight:
     def __init__(self, flight_num, depatrue_time, arrival_time):
         self.__flight_num = flight_num
@@ -23,38 +25,55 @@ class Flight:
         self.__arrival_time = value
 
     def get_flight_time(self):
+        start_hour = self.departure_time.hour
+        start_min = self.departure_time.minute
+        start_sec = self.departure_time.second
 
-        flight_time_hours = self.arrival_time[3] - self.departure_time[3]
-        flight_time_minutes = self.arrival_time[4] - self.departure_time[4]
-        flight_time_sec = self.arrival_time[5] - self.departure_time[5]
+        end_hour = self.arrival_time.hour
+        end_min = self.arrival_time.minute
+        end_sec = self.arrival_time.second
 
-        flight_time_minutes += flight_time_hours * 60 + flight_time_sec / 60
+        total_flight_time = (end_hour - start_hour) * 60 + end_min - start_min + (end_sec - start_sec) / 60
 
-        return int(flight_time_minutes)
+        return int(total_flight_time)
 
 class Itineray():
     def __init__(self, flights):
         self.flights = flights
-    
-    def get_total_travel_time(self):
-        
-        start_hour = self.flights[0].departure_time[3]
-        start_min = self.flights[0].departure_time[4]
 
-        end_hour = self.flights[-1].arrival_time[3]
-        end_min = self.flights[-1].arrival_time[4]
+    def get_total_travel_time(self): 
+        lis_storage = []
+        result = 0.0
+        start = self.flights[0].departure_time
 
-        total_travel_time = (end_hour - start_hour) * 60 + (end_min - start_min)
+        for i in range(0,len(self.flights)):
+            lis1 = self.flights[i]
+            lis_storage.append(lis1.arrival_time.hour)
+            lis_storage.append(lis1.arrival_time.minute)
+            lis_storage.append(lis1.arrival_time.second)
+
+            hour = lis_storage[0]
+            min = lis_storage[1]
+            sec = lis_storage[2]
+
+            departure_time = hour * 60 + min + sec / 60
+
+            if departure_time > result:
+                result = departure_time
+            lis_storage = []
+
+        start_hour = start.hour
+        start_min = start.minute
+        start_sec = start.second
+        start_time = start_hour * 60 + start_min + start_sec / 60
+
+        total_travel_time = result - start_time
 
         return total_travel_time
 
     def get_total_flight_time(self):
-        lis_of_minutes_in_air = []
-        index = 0
 
-        for i in range(0, len(self.flights)):
-            lis_of_minutes_in_air.append(Flight.get_flight_time(self.flights[index]))
-            index +=1
+        lis_of_minutes_in_air = [Flight.get_flight_time(self.flights[x]) for x in range(0, len(self.flights))]
 
         return sum(lis_of_minutes_in_air)
 
@@ -62,16 +81,16 @@ class Itineray():
 def main():
     flights = []
 
-    flights.append(Flight("US230", (2014, 4, 5, 5, 5, 0), (2014, 4, 5, 6, 15, 0)))
-    flights.append(Flight("US235", (2014, 4, 5, 6, 55, 0), (2014, 4, 5, 7, 45, 0)))
-    flights.append(Flight("US237", (2014, 4, 5, 9, 35, 0), (2014, 4, 5, 12, 55, 0)))
+    flights.append(Flight("US230", datetime(2014, 4, 5, 5, 5, 0), datetime(2014, 4, 5, 6, 15, 0)))
+    flights.append(Flight("US235", datetime(2014, 4, 5, 6, 55, 0), datetime(2014, 4, 5, 7, 45, 0)))
+    flights.append(Flight("US237", datetime(2014, 4, 5, 9, 35, 0), datetime(2014, 4, 5, 12, 55, 0)))
 
     itinerary = Itineray(flights)
 
+    print(itinerary.get_total_flight_time())
+    
     print(itinerary.get_total_travel_time())
 
-    print(itinerary.get_total_flight_time())
-   
-
+    
 if __name__ == "__main__":
     main()
