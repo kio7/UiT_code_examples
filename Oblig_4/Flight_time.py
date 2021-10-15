@@ -42,27 +42,32 @@ class Itineray():
         self.flights = flights
 
     def get_total_travel_time(self): 
-        result = 0.0
+        latest_arrival_time = 0.0
+        earliest_departure_time = 1440.1
 
+        for i in range(0, len(self.flights)):
+            temp = self.flights[i].departure_time
+            start_hour = temp.hour
+            start_min = temp.minute
+            start_sec = temp.second
+
+            departure_time = start_hour * 60 + start_min + start_sec / 60
+            
+            if departure_time < earliest_departure_time:
+                earliest_departure_time = departure_time
+        
         for i in range(0,len(self.flights)):
-            lis1 = self.flights[i]
-            hour = lis1.arrival_time.hour
-            min = lis1.arrival_time.minute
-            sec = lis1.arrival_time.second
+            temp = self.flights[i].arrival_time
+            end_hour = temp.hour
+            end_min = temp.minute
+            end_sec = temp.second
 
-            arrival_time = hour * 60 + min + sec / 60
+            arrival_time = end_hour * 60 + end_min + end_sec / 60
 
-            if arrival_time > result:
-                result = arrival_time
+            if arrival_time > latest_arrival_time:
+                latest_arrival_time = arrival_time
 
-
-        start = self.flights[0].departure_time
-        start_hour = start.hour
-        start_min = start.minute
-        start_sec = start.second
-        start_time = start_hour * 60 + start_min + start_sec / 60
-
-        total_travel_time = result - start_time
+        total_travel_time = latest_arrival_time - earliest_departure_time
         return int(total_travel_time)
 
 
