@@ -1,9 +1,9 @@
 from datetime import datetime
 
 class Flight:
-    def __init__(self, flight_num, depatrue_time, arrival_time):
+    def __init__(self, flight_num, departure_time, arrival_time):
         self.__flight_num = flight_num
-        self.__departure_time = depatrue_time
+        self.__departure_time = departure_time
         self.__arrival_time = arrival_time
 
     @property
