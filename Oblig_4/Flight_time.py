@@ -63,7 +63,7 @@ class Itineray():
         start_time = start_hour * 60 + start_min + start_sec / 60
 
         total_travel_time = result - start_time
-        return total_travel_time
+        return int(total_travel_time)
 
 
     def get_total_flight_time(self):
