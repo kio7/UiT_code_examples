@@ -32,13 +32,11 @@ class Panel:
     
     def right(self):
         position = self.canvas.coords("Circle")
-        print(position)
         if position[2] < 500:
             self.canvas.move("Circle", 10, 0)
 
     def left(self):
         position = self.canvas.coords("Circle")
-        print(position)
         if position[0] > 5:
             self.canvas.move("Circle", -10, 0)
     
