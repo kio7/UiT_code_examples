@@ -3,7 +3,7 @@ from tkinter import *
 class Panel:
     def __init__(self):
         window = Tk() 
-        window.title("Move a Ball") 
+        window.title("Moving ball") 
         
         self.canvas = Canvas(window, width = 500, height = 250, 
             bg = "light gray")
