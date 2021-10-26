@@ -5,8 +5,7 @@ class Panel:
         window = Tk() 
         window.title("Moving Ball") 
         
-        self.canvas = Canvas(window, width = 500, height = 250, 
-            bg = "light gray")
+        self.canvas = Canvas(window, width = 500, height = 250, bg = "light gray")
         self.canvas.pack()
         
         frame = Frame(window)
