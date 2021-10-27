@@ -22,7 +22,6 @@ class Panel:
         bt_down.grid(row = 2, column = 2)
         
         self.canvas.create_oval(240, 115, 270, 145, fill = "red", tags = "Circle", )
-        #self.canvas.create_oval()
         window.mainloop()
        
     def handler_right(self):
@@ -43,6 +42,6 @@ class Panel:
     def handler_down(self):
         position = self.canvas.coords("Circle")
         if position[3] < 250:
-            self.canvas.move("Circle", 0, +5)
+            self.canvas.move("Circle", 0, 5)
 
 Panel()
