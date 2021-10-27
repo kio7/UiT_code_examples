@@ -16,10 +16,10 @@ class Panel:
         bt_up = tk.Button(frame, text = "Up", command = self.handler_up)
         bt_down= tk.Button(frame, text = "Down", command = self.handler_down)
 
-        bt_left.grid(row = 1, column = 1)
-        bt_right.grid(row = 1, column = 2)
-        bt_up.grid(row = 1, column = 3)
-        bt_down.grid(row = 1, column = 4)
+        bt_left.grid(row = 2, column = 1)
+        bt_right.grid(row = 2, column = 3)
+        bt_up.grid(row = 1, column = 2)
+        bt_down.grid(row = 2, column = 2)
         
         self.canvas.create_oval(240, 115, 270, 145, fill = "red", tags = "Circle", )
         #self.canvas.create_oval()
@@ -28,21 +28,21 @@ class Panel:
     def handler_right(self):
         position = self.canvas.coords("Circle")
         if position[2] < 500:
-            self.canvas.move("Circle", 10, 0)
+            self.canvas.move("Circle", 5, 0)
 
     def handler_left(self):
         position = self.canvas.coords("Circle")
-        if position[0] > 5:
-            self.canvas.move("Circle", -10, 0)
+        if position[0] > 0:
+            self.canvas.move("Circle", -5, 0)
     
     def handler_up(self):
         position = self.canvas.coords("Circle")
-        if position[1] > 10:
-            self.canvas.move("Circle", 0, -10)
+        if position[1] > 5:
+            self.canvas.move("Circle", 0, -5)
 
     def handler_down(self):
         position = self.canvas.coords("Circle")
-        if position[3] < 240:
-            self.canvas.move("Circle", 0, +10)
+        if position[3] < 250:
+            self.canvas.move("Circle", 0, +5)
 
 Panel()
