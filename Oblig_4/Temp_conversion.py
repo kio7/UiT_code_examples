@@ -7,6 +7,8 @@ class Panel:
         
         frame = tk.Frame(window, width = 300, height = 150, bg = "gray")
         frame.pack()
+
+        tk.Entry()
         
         bt_convert = tk.Button(frame, text = "Convert", command = self.handler_convert)
 

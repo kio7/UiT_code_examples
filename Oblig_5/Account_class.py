@@ -1,8 +1,8 @@
 class Account:
     def __init__(self, id=0, balance=100, annual_interest_rate=0):
-        self.__id = id
-        self.__balance = balance
-        self.__annual_interest_rate = annual_interest_rate
+        self.__id = int(id)
+        self.__balance = float(balance)
+        self.__annual_interest_rate = float(annual_interest_rate)
 
     @property
     def id(self):
