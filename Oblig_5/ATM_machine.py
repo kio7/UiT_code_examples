@@ -31,7 +31,7 @@ def choice_handler(accounts, choice, id):
 
 def main_system(accounts):   
     while True:
-        user_id = int(input("Enter an id please: "))
+        user_id = int(input("Enter an account id: "))
         
         if user_id < 0 or user_id > 9:
             print("Innvalid id, please try again.")
@@ -48,7 +48,7 @@ def main_system(accounts):
 def main():
     accounts = []
     for x in range(10):
-        accounts.append(Account(x, 100, 0))
+        accounts.append(Account(x))
     
     while True:
         main_system(accounts)
