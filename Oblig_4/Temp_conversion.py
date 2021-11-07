@@ -3,7 +3,7 @@ import tkinter as tk
 class LoanCalculator:
     def __init__(self):
         window = tk.Tk() 
-        window.title("Loan Calculator") 
+        window.title("Temp Conversion") 
         
         tk.Label(window, text = "Enter Celsius").grid(row = 1, column = 1, sticky = "W")
         tk.Label(window, text = "Fahrenheit Temprature").grid(row = 2, column = 1, sticky = "W")
