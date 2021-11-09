@@ -33,7 +33,7 @@ class Flight:
         end_min = self.arrival_time.minute
         end_sec = self.arrival_time.second
 
-        return int(end_hour - start_hour * 60 + end_min - start_min + (end_sec - start_sec) / 60)
+        return int((end_hour - start_hour) * 60 + end_min - start_min + (end_sec - start_sec) / 60)
 
 class Itineray():
     def __init__(self, flights):
