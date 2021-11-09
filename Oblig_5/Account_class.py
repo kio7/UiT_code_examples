@@ -39,7 +39,6 @@ class Account:
 
 def main():
     account = Account(1122, 20000, 4.5)
-    account.id = 101
     account.withdraw(2500)
     account.deposit(3000)
 
