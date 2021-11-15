@@ -42,10 +42,10 @@ def main():
     account.withdraw(2500)
     account.deposit(3000)
 
-    print(account.id)
-    print(account.balance)
-    print(f"{account.get_monthly_interest_rate()}%")
-    print(account.get_monthly_interest())
+    print("Account id: ", account.id)
+    print("Account balance: ", account.balance)
+    print(f"Monthly interest rate: {account.get_monthly_interest_rate()}%")
+    print("Monthly interest: ", account.get_monthly_interest())
     
 
 if __name__ == "__main__":

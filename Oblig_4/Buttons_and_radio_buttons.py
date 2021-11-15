@@ -3,8 +3,7 @@ import tkinter as tk
 class Panel:
     def __init__(self):
         window = tk.Tk() 
-        window.title("Moving Ball") 
-        
+        window.title("Buttons and Radio-buttons") 
         
         frame = tk.Frame(window, width = 500, height = 250, bg = "gray")
         frame.pack()
