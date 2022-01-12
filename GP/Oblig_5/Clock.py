@@ -49,7 +49,12 @@ class Clock:
                 else:
                     self.day += 1
         else:
-            self.day += 1
+            if self.day >= 30:
+                self.inc_month()
+                self.day = 1
+            else:
+                self.day += 1
+
     def inc_month(self):
         if self.month >= 12:
             self.inc_year()
