@@ -29,8 +29,11 @@ def main():
         display_menu()
 
         # Get the user's choice.
-        choice = int(input('Enter your choice: '))
-
+        try:
+            choice = int(input('Enter your choice: '))
+        except ValueError:
+            print("Putting a string into this parameter doesn't work, try entering an Integer")
+            
         # Perform the selected action.
         if choice == NEW_CAR_CHOICE:
             try:
@@ -92,7 +95,7 @@ def main():
                 print(item)
 
         elif choice == QUIT_CHOICE:
-            vehicles_list = sorted(vehicles_list, key=attrgetter("make"))
+            vehicles_list = sorted(vehicles_list, key=attrgetter("brand"))
             pickle.dump(vehicles_list, open("Vehicle_save_file.p", "wb"))   
             print('Exiting the program...')
 

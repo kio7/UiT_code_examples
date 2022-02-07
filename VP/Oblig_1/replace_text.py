@@ -1,4 +1,4 @@
-import os.path
+import os
 
 # Filen som har blitt opprettet for å teste denne er: "test.txt"
 
@@ -11,7 +11,6 @@ def replace_text(filename, old_string, new_string):
     
     with open(os.path.join(file_dir, filename), "w") as file:
         file.write(file_data)
-    print("Done")
 
 
 def main():
@@ -19,6 +18,7 @@ def main():
     old_string = input("Enter the old string to be replaced: ")
     new_string = input("Enter the new string to replase the old string: ")
 
+    
     replace_text(filename, old_string, new_string)
 
 
