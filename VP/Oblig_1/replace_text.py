@@ -11,6 +11,7 @@ def replace_text(filename, old_string, new_string):
     
     with open(os.path.join(file_dir, filename), "w") as file:
         file.write(file_data)
+    print("Done")
 
 
 def main():
