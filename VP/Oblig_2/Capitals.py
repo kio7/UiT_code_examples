@@ -8,7 +8,7 @@ def display_capitals():
         for _ in range(50):
             file_data = file.readline()
             x = file_data.strip().split(",")
-            x[0] = x[0].lower()
+            x[0] = x[0].lower() # Doing this compined with input.lower() to make it so you can type capital or non-capital and 
             x[1] = x[1][1:] # Removing a blank space before every Capital name
             temp_dict = dict([x])
             dict_of_states.update(temp_dict)
