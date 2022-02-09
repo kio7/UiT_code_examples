@@ -33,19 +33,16 @@ class MovableVertices_GUI:
             move_y = e.y - (ball_1_coords[1] + 20)
             self.canvas.move(self.ball_1, move_x, move_y)
             self.canvas.delete("line")
-            self.canvas.create_line(ball_1_coords[0] + 20, ball_1_coords[1] + 20, ball_2_coords[0] + 20, ball_2_coords[1] + 20, width = 2, tag = "line")
-            self.canvas.itemconfig(self.text, text = length_line)
-            self.canvas.moveto(self.text, (line_coords[0] + line_coords[2]) / 2 - 10, (line_coords[1] + line_coords[3]) / 2 - 10)
-
         
         elif e.x > ball_2_coords[0] and e.y > ball_2_coords[1] and e.x < ball_2_coords[2] and e.y < ball_2_coords[3] and mouse_distance_ball_2 >= 70:
             move_x = e.x - (ball_2_coords[0] + 20)
             move_y = e.y - (ball_2_coords[1] + 20)
             self.canvas.move(self.ball_2, move_x, move_y)
             self.canvas.delete("line")
-            self.canvas.create_line(ball_1_coords[0] + 20, ball_1_coords[1] + 20, ball_2_coords[0] + 20, ball_2_coords[1] + 20, width = 2, tag = "line")
-            self.canvas.itemconfig(self.text, text = length_line)
-            self.canvas.moveto(self.text, (line_coords[0] + line_coords[2]) / 2 - 10, (line_coords[1] + line_coords[3]) / 2 - 10)
+        
+        self.canvas.create_line(ball_1_coords[0] + 20, ball_1_coords[1] + 20, ball_2_coords[0] + 20, ball_2_coords[1] + 20, width = 2, tag = "line")
+        self.canvas.itemconfig(self.text, text = length_line)
+        self.canvas.moveto(self.text, (line_coords[0] + line_coords[2]) / 2 - 10, (line_coords[1] + line_coords[3]) / 2 - 10)
 
 
 if __name__ == "__main__":
