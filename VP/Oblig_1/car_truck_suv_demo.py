@@ -4,6 +4,7 @@ import vehicles
 import time
 import pickle
 from operator import attrgetter
+import os
 
 # Constants for the menu choices
 NEW_CAR_CHOICE = 1
@@ -15,12 +16,13 @@ QUIT_CHOICE = 6
 
 def main():
     try:
-        vehicles_list = pickle.load(open("Vehicle_save_file.dat", "rb"))
+        dir_name = os.path.dirname(__file__)
+        vehicles_list = pickle.load(open(os.path.join(dir_name, "Vehicle_save_file.dat"), "rb"))
     except FileNotFoundError:
         user_input = str(input("The save file was not found, would you want us make a new one? Answer: ")).lower()
         if user_input == "yes":
             vehicles_list = []
-            pickle.dump(vehicles_list, open("Vehicle_save_file.dat", "wb"))
+            pickle.dump(vehicles_list, open(os.path.join(dir_name, "Vehicle_save_file.dat"), "wb"))
             vehicles_list = []
 
     choice = 0
@@ -95,7 +97,7 @@ def main():
 
         elif choice == QUIT_CHOICE:
             vehicles_list = sorted(vehicles_list, key=attrgetter("brand"))
-            pickle.dump(vehicles_list, open("Vehicle_save_file.dat", "wb"))   
+            pickle.dump(vehicles_list, open(os.path.join(dir_name, "Vehicle_save_file.dat"), "wb"))
             print('Exiting the program...')
 
         else:
