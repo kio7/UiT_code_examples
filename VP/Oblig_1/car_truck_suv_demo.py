@@ -79,15 +79,15 @@ def main():
 
         elif choice == FIND_VEHICLE_CHOICE:
             list_temp = []
-            name_of_vehicle = str(input("Name of Vehicle: "))
+            name_of_vehicle = (input("Name of Vehicle: ")).lower()
             for elem in vehicles_list:
-                if name_of_vehicle in elem.brand:
+                if name_of_vehicle in elem.brand.lower():
                     list_temp.append(elem)
             if list_temp:
                 for elem in list_temp:
                     print(elem)
             else:
-                print("No Vehicle with that name was fround, returning to Main Menu.")
+                print("No Vehicle with that name was found, returning to Main Menu.")
                 
 
         elif choice == SHOW_VEHICLES_CHOICE:
