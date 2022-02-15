@@ -2,7 +2,7 @@ def test_anagram(dict):
     string_one = ''.join(sorted(dict.get("one")))
     string_two = ''.join(sorted(dict.get("two")))
     
-    if string_one == string_two: return True
+    return string_one == string_two
 
 
 def main():
