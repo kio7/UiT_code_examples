@@ -1,5 +1,4 @@
 import os
-from tkinter.font import BOLD
 
 def main():
     dir_name = os.path.dirname(__file__)
