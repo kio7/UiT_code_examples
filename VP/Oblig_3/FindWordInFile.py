@@ -41,7 +41,7 @@ class FindWordInFile:
     def recursive_func(self, path, word):
         try:
             dir_names = os.listdir(path)
-            dir_names = [f"{path}\\{i}" for i in dir_names if i[0] != "."]
+            dir_names = [f"{path}\\{i}" for i in dir_names if i[0] != "." or i[0] != "_"]
             for elem in dir_names:
                 if os.path.isdir(elem):
                     self.folders_num += 1
