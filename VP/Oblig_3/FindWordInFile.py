@@ -59,9 +59,9 @@ class FindWordInFile:
                     self.files_num += 1
 
         except FileNotFoundError:
-            self.text.insert('end', f"File not found error")
-        except:
-            pass
+            self.text.insert('end', "File not found error\n")
+        except UnicodeDecodeError:
+            self.text.insert('end', "Unicode error, moving on.\n")
         
 
     def print_func(self):
