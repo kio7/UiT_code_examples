@@ -177,7 +177,6 @@ class LinkedList:
             return None
         
         if self.size == 1:
-            self.tail = None
             self.head.element = None
     
         current = self.head
@@ -190,6 +189,7 @@ class LinkedList:
         self.head = self.tail = None
         self.size = 0
     
+
     # Return true if this list contains the element 
     def contains(self, elem):
         if self.size == 0:
@@ -206,6 +206,8 @@ class LinkedList:
 
             current = current.next
         
+        return False        
+
 
     # Remove the element and return true if the element is in the list 
     def remove(self, elem):
@@ -252,6 +254,7 @@ class LinkedList:
 
         return current.element
 
+
     # Return the index of the head matching element in this list.
     # Return -1 if no match.
     def index_of(self, elem):
@@ -266,6 +269,7 @@ class LinkedList:
             count += 1
 
         return count
+
 
     # Return the index of the last matching element in this list
     # Return -1 if no match. 
@@ -297,6 +301,7 @@ class LinkedList:
         
         current.element = elem
 
+
     # Return elements via indexer
     def __getitem__(self, index):
         return self.get(index)
@@ -305,6 +310,7 @@ class LinkedList:
     def __iter__(self):
         return LinkedListIterator(self.head)
     
+
 # The Node class
 class Node:
     def __init__(self, e):
