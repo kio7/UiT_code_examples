@@ -160,7 +160,7 @@ class LinkedList:
         result = "["
         if self.size != 0:
             current = self.head
-            for i in range(self.size):
+            for _ in range(self.size):
                 result += str(current.element)
                 current = current.next
                 if current != None:
@@ -173,21 +173,14 @@ class LinkedList:
         
     # From here is where the task begins.
     def clear(self):
-        if self.size == 0:
-            return None
-        
-        if self.size == 1:
-            self.head.element = None
-    
         current = self.head
         for _ in range(self.size):
-            current.element = None
             previous = current
             current = current.next
             previous.next = None
-
+            self.size -= 1
+            
         self.head = self.tail = None
-        self.size = 0
     
 
     # Return true if this list contains the element 
@@ -283,9 +276,12 @@ class LinkedList:
         if elem in lis:
             for count, i in enumerate(lis):
                 if i == elem:
+                    if count < len(lis):
+                        if elem not in lis[count + 1:]:
+                            return count
                     if count == self.size - 1:
                         return count
-                    if i not in lis[count:]:
+                    if i not in lis[count: 1]:
                         return count
         return -1
                 
@@ -332,12 +328,11 @@ class LinkedListIterator:
 
 if __name__ == "__main__":
     lis = LinkedList()
-    lis.add_first("Helge")
+    lis.add("Helge")
     lis.add("Konrad")
     lis.add("Marthe")
     lis.add("Anders")
     lis.add("Helge")
-
 
     print(lis.contains("Helge"))
 
