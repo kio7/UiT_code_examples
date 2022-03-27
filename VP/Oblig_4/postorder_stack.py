@@ -1,4 +1,4 @@
-# Made in collaberation with Anders Karkskås and Jørgen Nordås
+# Made in collaboration with Anders Karkskås and Jørgen Nordås
 
 class Stack:
     def __init__(self):

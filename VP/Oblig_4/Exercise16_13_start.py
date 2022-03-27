@@ -1,4 +1,4 @@
-# Made in collaberation with Anders Karlskås and Jørgen Nordås
+# Made in collaboration with Anders Karlskås and Jørgen Nordås
 
 import tkinter as tk
 from gift_wrapping import get_convex_hull

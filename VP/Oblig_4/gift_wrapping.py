@@ -1,4 +1,4 @@
-# Made in collaberation with Anders Karlskås and Jørgen Nordås
+# Made in collaboration with Anders Karlskås and Jørgen Nordås
 
 from math import sqrt
 
