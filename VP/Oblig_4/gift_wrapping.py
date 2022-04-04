@@ -25,7 +25,8 @@ def get_convex_hull(old_points):
 
     while True:
         while len(copy) > 0:
-            for x2, y2 in copy:
+            while len(copy) > 0:
+                x2, y2 = copy[0][0], copy[0][1]
                 res = calc_lef_rig(p0[0], p0[1], x1, y1, x2, y2)
 
                 if res == 0: # If on the same line
@@ -39,6 +40,7 @@ def get_convex_hull(old_points):
 
                 else: # If P2 on the left
                     copy.pop(copy.index([x2, y2]))
+
 
         p0 = [x1, y1]
         # If first p0 == new p0 then break
@@ -58,7 +60,6 @@ def check_distance(x1, y1, x2, y2):
 
 
 def calc_lef_rig(y0, x0, y1, x1, y2, x2):
-    print(x1, x0, y2, y0, x2, x0, y1, y0)
     return ((x1 - x0) * (y2 - y0)) - ((x2 - x0) * (y1 - y0))
 
 def main():
@@ -67,7 +68,7 @@ def main():
     data = [[1, 2.4], [2.5, 2], [1.5, 34.5], [5.5, 6], [6, 2.4], [5.5, 9]]
     res = get_convex_hull(data)
     print(res)
-    fasit = [[2.5, 2.0], [6.0, 2.4], [5.5, 9.0], [1.5, 34.5], [1.0, 2.4]]
+    fasit = [[2.5, 2.0], [6.0, 2.4], [5.5, 9.0], [1.5, 34.5], [1.0, 2.4]] # The one that should betaken out [5.5, 6]
     print(fasit)
 
 if __name__ == '__main__':
