@@ -204,7 +204,9 @@ if __name__ == "__main__":
     print("values are " + str(map.values()))
 
     map.remove("Smith") # Remove Smith from map
+    print("Smith deleted")
     print("The map is " + map.get_table())
 
     map.clear()
+    print("map cleared")
     print("The map is " + map.get_table())
