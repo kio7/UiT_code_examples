@@ -1,5 +1,6 @@
 import asyncio
 from random import randint
+import datetime
 
 class Counter:
     def __init__(self, count=0):
@@ -37,15 +38,14 @@ async def execute_io(number:int, counter:Counter) -> int:
 
 async def main():
     counter = Counter()
-    amount = 500_000
-
+    amount = 50_000
+    start = datetime.datetime.now()
     tasks = [asyncio.create_task(execute_io(i, counter)) for i in range(1, amount+1)]
 
     result = await asyncio.gather(*tasks)
 
-    print(f"Finished  processing, result {sum(result)}, got counter: {counter.count}")
-
-
+    print(f"total time: {datetime.datetime.now() - start}")
+    print(f"Finished  processing, result {sum(result)}, got counter: {counter}")
 
 if __name__ == '__main__':
     asyncio.run(main())
