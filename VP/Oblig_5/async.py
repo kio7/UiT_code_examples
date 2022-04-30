@@ -1,5 +1,5 @@
 import asyncio
-from random import uniform
+from random import randint
 
 class Counter:
     def __init__(self, count=0):
@@ -11,7 +11,7 @@ class Counter:
     
     @count.setter
     def count(self, value):
-        self.count = value
+        self.__count = value
 
     def increment(self):
         self.count += 1
@@ -30,29 +30,22 @@ async def digit_sum(num):
     
 
 async def execute_io(number:int, counter:Counter) -> int:
-    await asyncio.sleep(uniform(0, 2))
+    await asyncio.sleep(randint(0, 2))
     counter.increment()
-    return digit_sum(number)
+    return await digit_sum(number)
 
 
-async def main(tasks, num, counter):
-    lis = []
-    for i in range(tasks):
-        task = asyncio.create_task(execute_io(num, counter))
-        lis.append(task)
+async def main():
+    counter = Counter()
+    amount = 500_000
 
-    return_lis = []
-    async for elem in lis:
-        result = await asyncio.gather(elem)
-        return_lis.append(result)
+    tasks = [asyncio.create_task(execute_io(i, counter)) for i in range(1, amount+1)]
 
-    return return_lis
+    result = await asyncio.gather(*tasks)
+
+    print(f"Finished  processing, result {sum(result)}, got counter: {counter.count}")
+
 
 
 if __name__ == '__main__':
-    counter = Counter()
-    num = int(input("Enter an amount of tasks: "))
-    amount = 10
-    result = asyncio.run(main(amount, num, counter))
-
-    print(f"Finished  processing, result {sum(result)}, got counter: {counter.count}")
+    asyncio.run(main())
