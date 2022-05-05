@@ -11,7 +11,7 @@ class Bitwise:
         self.first_int = tk.IntVar(self.window)
         self.first_entry = tk.Entry(self.window, textvariable = self.first_int, justify = 'left', width = 4)
         self.first_entry.grid(row = 1, column = 2)
-        self.first_bit = tk.StringVar(self.window)
+        self.first_bit = tk.IntVar(self.window)
         tk.Label(self.window, textvariable=self.first_bit, width=9).grid(row=1, column=3)
         tk.Label(self.window, text="Only this for SHIFTRIGHT(1), SHIFTLEFT(1), OCOMP").grid(row=1, column=4)
         
@@ -20,24 +20,25 @@ class Bitwise:
         self.second_int = tk.IntVar(self.window)
         self.second_entry = tk.Entry(self.window, textvariable = self.second_int, justify = 'left', width = 4)
         self.second_entry.grid(row = 2, column = 2)
-        self.second_bit = tk.StringVar(self.window)
+        self.second_bit = tk.IntVar(self.window)
         tk.Label(self.window, textvariable=self.second_bit, width=9).grid(row=2, column=3)
 
         # Third line
         tk.Label(self.window, text="Your answer").grid(row=3, column=1)
         self.third_int = tk.StringVar(self.window)
-        self.user_attempt = tk.Entry(self.window, textvariable=self.third_int, justify='left', width=9)
+        self.third_int.set("0")
+        self.user_attempt = tk.Entry(self.window, textvariable=self.third_int, justify='left', width=8)
         self.user_attempt.grid(row=3, column=3)
         self.option_var = tk.StringVar(self.window)
         self.option_var.set("Select operator")
-        tk.OptionMenu(self.window, self.option_var, "AND", "OR", "OCOMP", "XOR", "SHIFTLEFT", "SHIFTRIGHT").grid(row=3, column=4)
+        lis = ["AND", "OR", "OCOMP", "XOR", "SHIFTLEFT", "SHIFTRIGHT"]
+        tk.OptionMenu(self.window, self.option_var, *lis).grid(row=3, column=4)
         check_button = tk.Button(self.window, text = "Check", width = 10, command = self.button_click)
         check_button.grid(row = 3, column = 5)
 
         # Fourth line
         tk.Label(self.window, text="Correct answer").grid(row=4, column=1)
         self.correct_answer = tk.IntVar(self.window)
-        self.correct_answer.set("0")
         tk.Label(self.window, textvariable=self.correct_answer, width=9).grid(row=4, column=3)
         self.error_label = tk.StringVar(self.window)
         tk.Label(self.window, textvariable=self.error_label).grid(row=4, column=4)
@@ -56,7 +57,7 @@ class Bitwise:
             case "OR":
                 answer = first_int | second_int
             case "OCOMP":
-                answer = ~first_int
+                answer = ~first_int & 255
             case "XOR":
                 answer = first_int ^ second_int
             case "SHIFTLEFT":
@@ -64,17 +65,16 @@ class Bitwise:
             case "SHIFTRIGHT":
                 answer = first_int>>1
         try:
-            self.correct_answer.set(f"{answer:>08b}")
+            self.correct_answer.set(f"{answer:08b}")
         except UnboundLocalError as e:
             self.error_label.set(f"Error: {e}")
-            self.correct_answer.set(f"{0:>08b}")
+            self.correct_answer.set(f"{0:08b}")
             self.window.update_idletasks()
 
         
         # Checking if user was correct
         try:
-            third_string = self.third_int.get()
-            third_int = int(third_string, 2)
+            third_int = int(self.third_int.get(), 2)
             if answer == third_int:
                 self.user_attempt.configure(bg="green")
             else:
@@ -91,11 +91,9 @@ class Bitwise:
     def process(self, e):
         try:
             first_int = self.first_int.get()
-            self.first_bit.set(f"{first_int:>08b}")
-        
+            self.first_bit.set(f"{first_int:08b}")
             second_int = self.second_int.get()
-            self.second_bit.set(f"{second_int:>08b}")
-            self.window.update_idletasks()
+            self.second_bit.set(f"{second_int:08b}")
             self.error_label.set("")
             self.user_attempt.configure(bg="white")
             self.window.update_idletasks()
