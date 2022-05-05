@@ -12,7 +12,8 @@ class Bitwise:
         self.first_entry = tk.Entry(self.window, textvariable = self.first_int, justify = 'left', width = 4)
         self.first_entry.grid(row = 1, column = 2)
         self.first_bit = tk.IntVar(self.window)
-        tk.Label(self.window, textvariable=self.first_bit, width=9).grid(row=1, column=3)
+        self.first_bit.set(f"{0:08b}")
+        tk.Label(self.window, textvariable=self.first_bit, width=8).grid(row=1, column=3)
         tk.Label(self.window, text="Only this for SHIFTRIGHT(1), SHIFTLEFT(1), OCOMP").grid(row=1, column=4)
         
         # Second line
@@ -21,7 +22,8 @@ class Bitwise:
         self.second_entry = tk.Entry(self.window, textvariable = self.second_int, justify = 'left', width = 4)
         self.second_entry.grid(row = 2, column = 2)
         self.second_bit = tk.IntVar(self.window)
-        tk.Label(self.window, textvariable=self.second_bit, width=9).grid(row=2, column=3)
+        self.second_bit.set(f"{0:08b}")
+        tk.Label(self.window, textvariable=self.second_bit, width=8).grid(row=2, column=3)
 
         # Third line
         tk.Label(self.window, text="Your answer").grid(row=3, column=1)
@@ -39,7 +41,8 @@ class Bitwise:
         # Fourth line
         tk.Label(self.window, text="Correct answer").grid(row=4, column=1)
         self.correct_answer = tk.IntVar(self.window)
-        tk.Label(self.window, textvariable=self.correct_answer, width=9).grid(row=4, column=3)
+        self.correct_answer.set(f"{0:08b}")
+        tk.Label(self.window, textvariable=self.correct_answer, width=8).grid(row=4, column=3)
         self.error_label = tk.StringVar(self.window)
         tk.Label(self.window, textvariable=self.error_label).grid(row=4, column=4)
 
@@ -49,7 +52,7 @@ class Bitwise:
     
     def button_click(self):
         first_int = self.first_int.get()
-        second_int =self.second_int.get()
+        second_int = self.second_int.get()
         operator = self.option_var.get()
         match operator:
             case "AND":

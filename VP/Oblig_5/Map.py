@@ -30,10 +30,15 @@ class Map:
       
             self.rehash()
 
-        bucket_index = self.get_hash(key)
+        index = self.get_hash(key)
+        while True:
+            if len(self.table[index]) == 0:
+                break
+
+            index = (index + 1) % self.capacity
 
         # Add an entry (key, value) to hashTable[index]
-        self.table[bucket_index].append([key, value])
+        self.table[index].append([key, value])
         self.size += 1 # Increase size
 
     # Remove the entry for the specified key 
@@ -170,18 +175,8 @@ class Map:
         return h ^ (h >> 7) ^ (h >> 4)
 
     def get_hash(self, key):
-        index = self.supplemental_hash(hash(key)) & (self.capacity - 1)
+        return self.supplemental_hash(hash(key)) & (self.capacity - 1)
 
-        if len(self.table[index]) == 0:
-            return index
-        
-        while len(self.table[index]) != 0:
-            if key in self.table[index][0]:
-                return index
-
-            index = (index + 1) % self.capacity
-        
-        return index
 
 if __name__ == "__main__":
     map = Map()
