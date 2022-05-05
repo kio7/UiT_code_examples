@@ -64,9 +64,9 @@ class Bitwise:
             case "XOR":
                 answer = first_int ^ second_int
             case "SHIFTLEFT":
-                answer = first_int<<1
+                answer = first_int << 1 & 255
             case "SHIFTRIGHT":
-                answer = first_int>>1
+                answer = first_int >> 1
         try:
             self.correct_answer.set(f"{answer:08b}")
         except UnboundLocalError as e:
