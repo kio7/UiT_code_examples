@@ -38,7 +38,7 @@ async def execute_io(number:int, counter:Counter) -> int:
 
 async def main():
     counter = Counter()
-    amount = 50_000
+    amount = 500_000
     start = datetime.datetime.now()
     tasks = [asyncio.create_task(execute_io(i, counter)) for i in range(1, amount+1)]
 
