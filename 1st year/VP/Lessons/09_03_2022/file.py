@@ -121,8 +121,8 @@ def quick_sort_helper(lis):
 
 def make_list():
     lis = []
-    for x in range(200000):
-        lis.append(randint(-100000000,100000000))
+    for x in range(10000):
+        lis.append(randint(-100_000_000,100_000_000))
     return lis
 
 @timer
@@ -139,8 +139,8 @@ if __name__ == "__main__":
     # print('\nBubble sort')
     # bubble_sort(lis)
 
-    # print('\nInsertion sort')
-    # insertion_sort(lis)
+    print('\nInsertion sort')
+    insertion_sort(lis)
 
     print('\nMerge sort')
     merge_sort_helper(lis)

@@ -53,7 +53,7 @@ class LinkedList:
             self.tail = self.head
 
 
-    def add_last(self, e):
+    def append(self, e):
         new_node = Node(e)
     
         if self.tail == None:
@@ -64,9 +64,6 @@ class LinkedList:
             self.tail = self.tail.next
     
         self.size += 1
-    
-    def add(self, e): # Same as add_last
-        self.add_last(e)
 
 
     def insert(self, index, e):
