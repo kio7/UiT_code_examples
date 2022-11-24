@@ -141,7 +141,7 @@ if __name__ == "__main__":
     background_height = 800
     y_target_bottom = 66
 
-    max_fps = 30_000
+    max_fps = 300
 
     # Set up game loop
     pg.init()                                                                 # Initialize pygame modules
