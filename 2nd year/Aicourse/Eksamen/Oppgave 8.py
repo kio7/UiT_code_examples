@@ -179,6 +179,8 @@ bst = BinarySearchTree(Node(nodes[0]))
 for i in nodes[1:]:
     bst.insert(i)
 
+print(bst.root)
+
 populate_node_dict(bst.root, nodedict)
 
 
